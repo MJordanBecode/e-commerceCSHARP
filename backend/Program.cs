@@ -1,36 +1,41 @@
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using backend.Models; // <-- Namespace correct pour tes entités
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllers();          // Pour activer les Controllers
-builder.Services.AddEndpointsApiExplorer(); // Nécessaire pour OpenAPI/Swagger
-builder.Services.AddOpenApi();              // Ton AddOpenApi existant
-// Si tu utilises SignalR ou EF Core, tu peux les ajouter ici aussi
-// builder.Services.AddSignalR();
-// builder.Services.AddDbContext<YourDbContext>(...);
+// Add services to the container
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddOpenApi(); // si tu as ton extension AddOpenApi()
 
-var app = builder.Build();
-
+// Exemple pour DbContext et Identity (à décommenter si nécessaire)
+/*
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+*/
 
+var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();       // Pour Swagger UI
-    app.UseSwaggerUI();     // Interface test Swagger
-    app.MapOpenApi();       // Pour Scalar ou autres clients OpenAPI
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization(); // Si tu as des endpoints sécurisés
-
-app.MapControllers(); // Mappe tous tes Controllers
-// app.MapHub<NotificationHub>("/notificationHub"); // Si SignalR
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();
