@@ -44,6 +44,9 @@
 Thumbs.db
 
 
+/frontend/.angular/cache
+/frontend/.angular/*
+
 # ========================
 # BACKEND (C# / .NET)
 # ========================
@@ -73,3 +76,21 @@ Thumbs.db
 /backend/*.vspscc
 /backend/*.vssscc
 /backend/.nuget/
+
+# Assembly info et caches générés
+/backend/obj/**/*.AssemblyInfo.cs
+/backend/obj/**/*.AssemblyInfoInputs.cache
+/backend/obj/**/*.assets.cache
+/backend/obj/**/*.AssemblyReference.cache
+/backend/obj/**/*.nuget.dgspec.json
+/backend/obj/**/*.nuget.g.props
+/backend/obj/**/*.nuget.g.targets
+/backend/obj/**/*.nuget.cache
+/backend/obj/project.assets.json
+
+# Builds et debug
+/backend/obj/
+/backend/bin/
+
+# Logs supplémentaires
+/backend/*.log
