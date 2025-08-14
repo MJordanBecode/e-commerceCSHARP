@@ -1,5 +1,5 @@
 # ========================
-# FRONTEND (Angular/Node)
+# FRONTEND (Angular / Node)
 # ========================
 
 # Compiled output
@@ -8,7 +8,7 @@
 /frontend/out-tsc
 /frontend/bazel-out
 
-# Node
+# Node modules & logs
 /frontend/node_modules
 /frontend/npm-debug.log
 /frontend/yarn-error.log
@@ -45,31 +45,61 @@ Thumbs.db
 
 
 # ========================
-# BACKEND (C# / .NET)
+# BACKEND & TESTS (C# / .NET)
 # ========================
 
-# Build Folders
+# Build folders
 /backend/bin/
-.backend/obj/
+/backend/obj/
+/TestBackend/bin/
+/TestBackend/obj/
 
 # Visual Studio files
 /backend/.vs/
+/TestBackend/.vs/
 /backend/*.user
 /backend/*.suo
 /backend/*.userosscache
 /backend/*.sln.docstates
+/TestBackend/*.user
+/TestBackend/*.suo
+/TestBackend/*.userosscache
+/TestBackend/*.sln.docstates
 
-# Rider IDE
-/backend/.idea/
+# Rider / IntelliJ
+.idea/
+backend/.idea/
+TestBackend/.idea/
 
-# Resharper
+# ReSharper
 /backend/_ReSharper*/
+/TestBackend/_ReSharper*/
 
-# Dotnet Core
-/backend/*.dbmdl
-/backend/*.pdb
-/backend/*.mdb
-/backend/*.log
-/backend/*.vspscc
-/backend/*.vssscc
-/backend/.nuget/
+# Dotnet Core build artefacts
+**/*.dbmdl
+**/*.pdb
+**/*.mdb
+**/*.log
+**/*.vspscc
+**/*.vssscc
+**/.nuget/
+
+# Generated MSBuild & NuGet files
+**/*.nuget.dgspec.json
+**/*.nuget.g.props
+**/*.nuget.g.targets
+**/*.nuget.cache
+**/*.AssemblyInfo.cs
+**/*.AssemblyInfoInputs.cache
+**/*.assets.cache
+**/*.AssemblyReference.cache
+**/project.assets.json
+**/project.packagespec.json
+**/rider.project.model.nuget.info
+**/rider.project.restore.info
+**/*.GeneratedMSBuildEditorConfig.editorconfig
+**/*.GlobalUsings.g.cs
+
+# Coverage mappings
+**/.msCoverageSourceRootsMapping_*
+**/CoverletSourceRootsMapping_*
