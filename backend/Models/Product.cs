@@ -1,15 +1,46 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using backend.Models;
 
-namespace backend.Models;
-
-public class Product
+namespace backend.Models
 {
-    [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public class Product
+    {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid(); // Ajout de l'Id manquant
 
-    [Required]
-    [StringLength(100)]
-    public required string Name { get; set; }
+        [Required]
+        public Guid CategoryId { get; set; }
+
+        [Required]
+        public Category Category { get; set; } = null!;
+
+        [Required, MaxLength(255)]
+        public string Name { get; set; } = string.Empty;
+
+        [Required, MaxLength(1000)]
+        public string Description { get; set; } = string.Empty;
+
+        [Required, MaxLength(1000)]
+        public string Ingredients { get; set; } = string.Empty;
+
+        [Required, MaxLength(1000)]
+        public string PracticalInfo { get; set; } = string.Empty;
+
+        [Required, MaxLength(100)]
+        public string Brand { get; set; } = string.Empty;
+
+        public decimal ProductPrice { get; set; }
+
+        public decimal PricePerKilo { get; set; }
+
+        public int StockQuantity { get; set; } = 0;
+
+        public List<Favoris> FavorisList { get; set; } = new List<Favoris>();
+
+        public List<StockMovement> StockMovements { get; set; } = new List<StockMovement>();
+
+        public List<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    }
 }

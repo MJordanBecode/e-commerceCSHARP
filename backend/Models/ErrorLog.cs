@@ -1,10 +1,16 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace DefaultNamespace;
+namespace backend.Models;
 
 public class ErrorLog
 {
-   
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    public string ErrorMessage { get; set; }
+
+    public string StackTrace { get; set; }
+
+    public DateTime LoggedAt { get; set; } = DateTime.Now;
 }

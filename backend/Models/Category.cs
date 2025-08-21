@@ -12,5 +12,9 @@ public class Category
     [StringLength(100)]
     public string CategoryName { get; set; }
 
+    [Required]
     public string Name { get; set; }
+    
+    //Navigation : 1 catégorie => +ieurs produits
+    public List<Product> Products { get; set; }
 }

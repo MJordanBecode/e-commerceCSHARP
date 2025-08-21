@@ -1,3 +1,4 @@
+using backend.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -5,7 +6,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using backend.Models; // <-- Namespace correct pour tes entités
+using backend.Models;
+using backend;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,14 +17,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi(); // si tu as ton extension AddOpenApi()
 
 // Exemple pour DbContext et Identity (à décommenter si nécessaire)
-/*
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));//databaseConnection
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>() //Si j'utilise identity et que je change le IdentityUsser, je crée un nouveau fichier "ApplicationUser" avec les nouvelles propriétés que je dois mettre pour utilisateur, donc je dois changer IdentityUser par ApplicationUser
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
-*/
+
 
 var app = builder.Build();
 
