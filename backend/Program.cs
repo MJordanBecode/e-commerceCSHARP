@@ -26,7 +26,16 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>() //Si j'utilise ide
     .AddDefaultTokenProviders();
 
 
+
+
 var app = builder.Build();
+
+// 🔹 Seed la base au démarrage
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline
 if (app.Environment.IsDevelopment())
